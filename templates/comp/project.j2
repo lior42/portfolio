@@ -5,7 +5,7 @@
         <div>{# There isn't always an image, add empty div to keep consistent design #}</div>
     {% endif %}
     <h2>{{ p.title }}</h2>
-    <a href="{{ p.git_url }}">{% include "../static/images/github-logo/m-black.svg" %}</a>
+    <a href="{{ p.git_url }}">{{ github_logo|safe }}</a>
     {% if p.url %}<a href="{{ p.url }}">Live Demo</a>{% endif %}
     <p>{{ p.description }}</p>
     <ol>
