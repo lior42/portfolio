@@ -1,0 +1,39 @@
+{% extends "layout.j2" %}
+{% block page_title %}
+    - Contact Me
+{% endblock page_title %}
+{% block page_content %}
+    <form id="contact">
+        <input type="text"
+               id="name"
+               required
+               aria-label="Contact name"
+               placeholder="Contact name" />
+        <input type="email"
+               id="return_email"
+               required
+               aria-label="Contact email"
+               placeholder="Contact email" />
+        <input type="text"
+               id="company"
+               aria-label="Company Name"
+               placeholder="Company Name" />
+        <input type="url"
+               id="link"
+               aria-label="Company Website"
+               placeholder="Company Website" />
+        <textarea id="job_description" placeholder="Position's description"></textarea>
+        <button id="submit_btn" type="submit">Submit</button>
+        <div id="last_notes">
+            Fields described with
+            <img src="{{ url_for('static', path='/images/mandatory-icon.png') }}"
+                 alt="Mandatory icon" />
+            are mandatory.
+        </div>
+    </form>
+    <dialog id="output">
+        <div id="message"></div>
+        <button id="modal-close-btn">Close</button>
+    </dialog>
+    <script src="/static/scripts/contact-me.js"></script>
+{% endblock page_content %}

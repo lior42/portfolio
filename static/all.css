@@ -13,7 +13,7 @@
   --color-primary: hsl(210, 75%, 20%);
   --color-secondary: hsl(187, 40%, 33%);
   --color-secondary-light: hsl(187, 10%, 85%);
-  --color-primary-inv: hsl(210, 50%, 95%);
+  --color-primary-light: hsl(210, 20%, 75%);
   --color-bg: #efefef;
   --color-text: #222;
 
@@ -65,7 +65,7 @@ img {
   position: absolute;
   bottom: 0;
   width: 0;
-  transition: width 0.3s;
+  transition: width 0.2s;
 }
 
 .page-main.navigate a:hover {
@@ -75,7 +75,7 @@ img {
 
 .page-main.navigate a:hover::after {
   width: 100%;
-  animation: links 0.7s alternate;
+  animation: links 0.2s alternate;
 }
 
 h1,
@@ -190,4 +190,102 @@ h3 {
   transition: all 0.3s, transform 0.6s;
   background-color: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.actual-page form {
+  display: grid;
+  gap: 2ch;
+  grid-template-columns: auto auto;
+  max-width: 80ch;
+  margin: auto;
+}
+
+.actual-page form > * {
+  padding: 1.3ch;
+  border-radius: var(--rad-0);
+  border-style: solid;
+  border-color: var(--color-primary);
+  outline-color: var(--color-secondary);
+
+  color: var(--color-primary);
+}
+
+#job_description,
+#submit_btn,
+#last_notes {
+  grid-column-start: span 2;
+}
+
+#job_description {
+  min-height: 14ch;
+  font-family: Arial, sans-serif;
+  resize: none;
+}
+
+#last_notes,
+#last_notes * {
+  --__sz: 0.7rem;
+  font-size: var(--__sz);
+  border: 0;
+}
+
+#last_notes img {
+  height: var(--__sz);
+  width: var(--__sz);
+}
+
+.actual-page input:required {
+  padding-inline-end: 2ch;
+  background-size: 2ch 2ch;
+  background-position: calc(100% - 2ch) center;
+  background-image: url("/static/images/mandatory-icon.png");
+  background-repeat: no-repeat;
+}
+
+.actual-page ::placeholder {
+  color: var(--color-primary-light);
+}
+
+#submit_btn {
+  border: 1px solid var(--color-secondary-light);
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+#submit_btn:hover {
+  background-color: var(--color-text);
+}
+
+dialog#output[open=""] {
+  --__pad: 5%;
+  height: calc(100% - 2 * var(--__pad));
+  width: calc(100% - 2 * var(--__pad));
+  inset: var(--__pad);
+  border: 1px solid var(--color-text);
+  border-radius: var(--rad-0);
+  padding: calc(2 * var(--rad-0));
+
+  display: grid;
+  grid-template-columns: auto min-content;
+  align-items: baseline;
+}
+
+dialog#output button {
+  padding: 0.5rem;
+  border-radius: var(--pad-0);
+  background-color: var(--color-secondary);
+  color: #fff;
+  border: 1px solid var(--color-primary);
+  transition: all 0.2s ease-in-out;
+}
+
+dialog#output button:hover {
+  color: var(--color-bg);
+  background-color: var(--color-primary);
+}
+
+dialog#output div {
+  font-size: 1.3rem;
 }
