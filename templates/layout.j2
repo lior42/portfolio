@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Lior Lander Portfolio</title>
+        <link rel="stylesheet" href="{{ url_for('static', path='/all.css') }}" />
+        <link rel="apple-touch-icon"
+              sizes="180x180"
+              href="{{ url_for('static', path='/apple-touch-icon.png') }}" />
+        <link rel="icon"
+              type="image/png"
+              sizes="32x32"
+              href="{{ url_for('static', path='/favicon-32x32.png') }}" />
+        <link rel="icon"
+              type="image/png"
+              sizes="16x16"
+              href="{{ url_for('static', path='/favicon-16x16.png') }}" />
+        <meta charset="UTF-8" />
+        <meta name="description" content="Lior Lander's Portfolio Website" />
+        <meta name="keywords"
+              content="Portfolio, Python, JavaScript, TypeScript, MongoDB, MySQL, PostgreSQL, PHP, Moodle, WordPress" />
+        <meta name="author" content="Lior Lander" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        {% block page_head_extra %}
+        {% endblock page_head_extra %}
+    </head>
+    <body>
+        <header class="page-main title">
+            <h1>
+                Lior Lander Portfolio
+                {% block page_title %}
+                {% endblock page_title %}
+            </h1>
+        </header>
+        <nav class="page-main navigate">
+            {% include "navigate.j2" %}
+        </nav>
+        <main class="actual-page">
+            {% block page_content %}
+            {% endblock page_content %}
+        </main>
+        <footer class="page-main end">
+            {% include "footer.j2" %}
+        </footer>
+    </body>
+</html>

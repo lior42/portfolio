@@ -1,0 +1,193 @@
+/* CSS Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 1.125rem;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+/* Color Scheme */
+:root {
+  --color-primary: hsl(210, 75%, 20%);
+  --color-secondary: hsl(187, 40%, 33%);
+  --color-secondary-light: hsl(187, 10%, 85%);
+  --color-primary-inv: hsl(210, 50%, 95%);
+  --color-bg: #efefef;
+  --color-text: #222;
+
+  --pad-0: 0.7rem;
+  --pad-1: 1rem;
+
+  --rad-0: 0.7rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  padding: var(--pad-1) var(--pad-0);
+}
+
+img {
+  max-width: 100vw;
+  border-radius: var(--rad-0);
+}
+
+@keyframes links {
+  0% {
+    width: 1px;
+  }
+
+  100% {
+    width: 100%;
+  }
+}
+
+.page-main.navigate a {
+  color: var(--color-primary);
+  position: relative;
+  transition: color 0.3s, transform 0.3s;
+  text-decoration: none;
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.page-main.navigate a::after {
+  content: "";
+  height: 1px;
+  background-color: var(--color-secondary);
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  transition: width 0.3s;
+}
+
+.page-main.navigate a:hover {
+  color: var(--color-secondary);
+  transform: scaleX(1);
+}
+
+.page-main.navigate a:hover::after {
+  width: 100%;
+  animation: links 0.7s alternate;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.page-main.title {
+  padding: var(--pad-1) 0;
+}
+
+.page-main.title h1 {
+  font-size: 5rem;
+}
+
+.page-main.navigate ul {
+  display: flex;
+  gap: 4ch;
+  flex-direction: row;
+  padding: var(--pad-1) var(--pad-0);
+
+  list-style: none;
+}
+
+.page-main.navigate ul > * {
+  text-transform: capitalize;
+  font-weight: 500;
+}
+
+.actual-page {
+  margin: calc(2 * var(--pad-1)) auto;
+  width: clamp(67ch, 80%, 90%);
+  /* max-width: 70ch; */
+}
+
+.actual-page .bulletlist {
+  display: grid;
+  justify-content: center;
+  /* flex-direction: column; */
+  gap: 5ch;
+}
+
+.actual-page .card {
+  padding: 1ch;
+  border: 1px solid var(--color-secondary-light);
+  border-radius: var(--rad-0);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s, transform 0.6s;
+}
+
+.card .top {
+  display: grid;
+  grid-template-columns: 4fr max-content;
+
+  margin-bottom: 2ch;
+  gap: 1ch;
+}
+
+.company .card .top h3 {
+  grid-row-start: span 2;
+  font-size: 0.8rem;
+  color: var(--color-secondary);
+}
+
+.company .card .top sub {
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.company .card .bottom {
+  display: grid;
+  --_card-max-left: 20ch;
+  grid-template-columns: 1fr var(--_card-max-left);
+  gap: 2ch;
+}
+
+.company .card .bottom :not(p) {
+  max-width: var(--_card-max-left);
+}
+
+.company .card .bottom p {
+  /* border-inline-start: ; */
+  border-inline-end: 1px solid var(--color-secondary-light);
+  padding-inline-end: var(--pad-0);
+}
+
+.company .card .bottom ol {
+  display: flex;
+  flex-direction: column;
+  min-width: max-content;
+  list-style-type: none;
+  counter-reset: jobCounter;
+  gap: 0.3ch;
+}
+
+.company .card .bottom li {
+  color: var(--color-primary);
+  font-size: 1rem;
+  display: grid;
+  grid-template-columns: min-content auto;
+}
+
+.company .card .bottom li::before {
+  counter-increment: jobCounter;
+  content: counter(jobCounter) ")";
+  margin-inline-end: 1ch;
+}
+
+.actual-page .card:hover {
+  transition: all 0.3s, transform 0.6s;
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}

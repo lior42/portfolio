@@ -1,0 +1,15 @@
+{% extends "layout.j2" %}
+{% block page_title %}
+    - Previous Jobs
+{% endblock page_title %}
+{% block page_content %}
+    <div class="bulletlist company">
+        {% if career_list|length< 1 %}
+            {% include "comp/empty_notice.j2" %}
+        {% else %}
+            {% for c in career_list %}
+                {% include "comp/company.j2" %}
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock page_content %}

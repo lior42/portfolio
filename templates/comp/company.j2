@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="top">
+        <h2>{{ c.title }}</h2>
+        <h3>
+            {% if c.time_end %}
+                {{ c.time_start }} - {{ c.time_end }}
+            {% else %}
+                Current Position, Started {{ c.time_start }}
+            {% endif %}
+        </h3>
+        {% if c.company %}<sub>{{ c.company }}</sub>{% endif %}
+    </div>
+    <div class="bottom">
+        <p>{{ c.description }}</p>
+        <div>
+            <ol>
+                {% for tech in c.technologies %}<li>{{ tech }}</li>{% endfor %}
+            </ol>
+        </div>
+    </div>
+</div>

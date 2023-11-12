@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* CSS Reset */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-size: 1.125rem;
+        text-decoration: none;
+        font-weight: 400;
+      }
+
+      /* Color Scheme */
+      :root {
+        --color-primary: hsl(210, 75%, 20%);
+        --color-secondary: hsl(187, 40%, 33%);
+        --color-secondary-light: hsl(187, 10%, 85%);
+        --color-primary-inv: hsl(210, 50%, 95%);
+        --color-bg: #efefef;
+        --color-text: #222;
+
+        --pad-0: 0.7rem;
+        --pad-1: 1rem;
+
+        --rad-0: 0.7rem;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: var(--color-bg);
+        color: var(--color-text);
+        padding: var(--pad-1) var(--pad-0);
+      }
+
+      img {
+        max-width: 100vw;
+        border-radius: var(--rad-0);
+      }
+
+      @keyframes links {
+        0% {
+          width: 1px;
+        }
+
+        100% {
+          width: 100%;
+        }
+      }
+
+      .page-main.navigate a {
+        color: var(--color-primary);
+        position: relative;
+        transition: color 0.3s, transform 0.3s;
+        text-decoration: none;
+        display: inline-flex;
+        flex-direction: column;
+      }
+
+      .page-main.navigate a::after {
+        content: "";
+        height: 1px;
+        background-color: var(--color-secondary);
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        transition: width 0.3s;
+      }
+
+      .page-main.navigate a:hover {
+        color: var(--color-secondary);
+        transform: scaleX(1);
+      }
+
+      .page-main.navigate a:hover::after {
+        width: 100%;
+        animation: links 0.7s alternate;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: var(--color-primary);
+        font-weight: 600;
+      }
+
+      .page-main.title {
+        padding: var(--pad-1) 0;
+      }
+
+      .page-main.title h1 {
+        font-size: 5rem;
+      }
+
+      .page-main.navigate ul {
+        display: flex;
+        gap: 4ch;
+        flex-direction: row;
+        padding: var(--pad-1) var(--pad-0);
+
+        list-style: none;
+      }
+
+      .page-main.navigate ul > * {
+        text-transform: capitalize;
+        font-weight: 500;
+      }
+
+      .actual-page {
+        margin: calc(2 * var(--pad-1)) auto;
+        width: clamp(67ch, 80%, 90%);
+        /* max-width: 70ch; */
+      }
+
+      .actual-page .bulletlist {
+        display: grid;
+        justify-content: center;
+        /* flex-direction: column; */
+        gap: 5ch;
+      }
+
+      .actual-page .card {
+        padding: 1ch;
+        border: 1px solid var(--color-secondary-light);
+        border-radius: var(--rad-0);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s, transform 0.6s;
+      }
+
+      .card .top {
+        display: grid;
+        grid-template-columns: 4fr max-content;
+
+        margin-bottom: 2ch;
+        gap: 1ch;
+      }
+
+      .card .top h3 {
+        grid-row-start: span 2;
+        font-size: 0.8rem;
+        color: var(--color-secondary);
+      }
+      .card .top sub {
+        font-size: 1rem;
+        font-style: italic;
+      }
+
+      .card .bottom {
+        display: grid;
+        --_card-max-left: 20ch;
+        grid-template-columns: 1fr var(--_card-max-left);
+        gap: 2ch;
+      }
+
+      .card .bottom :not(p) {
+        max-width: var(--_card-max-left);
+      }
+
+      .card .bottom p {
+        /* border-inline-start: ; */
+        border-inline-end: 1px solid var(--color-secondary-light);
+        padding-inline-end: var(--pad-0);
+      }
+
+      .card .bottom ol {
+        display: flex;
+        flex-direction: column;
+        min-width: max-content;
+        list-style-type: none;
+        counter-reset: jobCounter;
+        gap: 0.3ch;
+      }
+
+      .card .bottom li {
+        color: var(--color-primary);
+        font-size: 1rem;
+        display: grid;
+        grid-template-columns: min-content auto;
+      }
+
+      .card .bottom li::before {
+        counter-increment: jobCounter;
+        content: counter(jobCounter) ")";
+        margin-inline-end: 1ch;
+      }
+
+      .actual-page .card:hover {
+        transition: all 0.3s, transform 0.6s;
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="page-main title">
+      <h1>My Name Portfolio</h1>
+    </header>
+    <nav class="page-main navigate">
+      <ul>
+        <li>
+          <a href="/">main</a>
+        </li>
+        <li>
+          <a href="/career">career</a>
+        </li>
+        <li>
+          <a href="/projects">projects</a>
+        </li>
+        <li>
+          <a href="#">example</a>
+        </li>
+        <li>
+          <a href="#">example</a>
+        </li>
+        <li>
+          <a href="#">example</a>
+        </li>
+        <li>
+          <a href="#">example</a>
+        </li>
+      </ul>
+    </nav>
+    <main class="actual-page">
+      <div class="bulletlist company">
+        <div class="card">
+          <div class="top">
+            <h2>Job Title 1</h2>
+            <h3>Jan 2020 - Dec 2022</h3>
+            <sub>Company A</sub>
+          </div>
+          <div class="bottom">
+            <p>Description of job 1</p>
+            <ol>
+              <li>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Recusandae ad neque tempora repellendus, quaerat fuga? Pariatur
+                animi ut repellat sequi eius vitae saepe dignissimos repellendus
+                provident necessitatibus? Officia, veritatis quae.
+              </li>
+              <li>Tech B</li>
+              <li>Tech C</li>
+            </ol>
+          </div>
+        </div>
+        <div class="card">
+          <div class="top">
+            <h2>Job Title 2</h2>
+            <h3>Mar 2018 - Jul 2020</h3>
+            <sub>Company B</sub>
+          </div>
+          <div class="bottom">
+            <p>Description of job 2</p>
+            <ol>
+              <li>Tech X</li>
+              <li>Tech Y</li>
+            </ol>
+          </div>
+        </div>
+        <div class="card">
+          <div class="top">
+            <h2>Job Title 3</h2>
+            <h3>Mar 2018 - Jul 2020</h3>
+            <sub>Company B</sub>
+          </div>
+          <div class="bottom">
+            <p>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptate quae fugit ut molestias blanditiis placeat nulla facere!
+              Aspernatur, optio sapiente eveniet reprehenderit, libero voluptate
+              quaerat cum quia nobis dignissimos accusantium! Lorem ipsum dolor
+              sit amet consectetur adipisicing elit. Ipsa laboriosam illo
+              dolores, sed, minima deserunt ea facilis assumenda asperiores
+              ratione voluptates id enim reiciendis nostrum atque quidem quo
+              totam amet! Aperiam, ducimus aspernatur quod architecto dolorem
+              nulla soluta! Rem ea tempore illo nesciunt ex iste, dolores amet
+              similique quas perferendis adipisci laboriosam enim aut totam
+              illum suscipit in ipsum mollitia. Minus eligendi aliquam
+              temporibus neque ducimus nemo. Nam provident iusto maiores veniam
+              perspiciatis modi consequatur obcaecati. Fugit incidunt iusto
+              placeat porro earum. Adipisci autem exercitationem aperiam unde
+              accusamus excepturi nobis.
+            </p>
+            <ol>
+              <li>Tech X</li>
+              <li>Tech Y</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="page-main end">temp footer</footer>
+  </body>
+</html>
