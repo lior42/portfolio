@@ -1,11 +1,14 @@
-<div>
-    {% if p.image %}
-        <img src="{{ p.image }}" alt="{{ p.title }}" />
-    {% else %}
-        <div>{# There isn't always an image, add empty div to keep consistent design #}</div>
-    {% endif %}
+<div class="card">
     <h2>{{ p.title }}</h2>
-    <a href="{{ p.git_url }}">{{ github_logo|safe }}</a>
+    {% if p.image %}
+        <img src="{{ p.image }}" alt="{{ p.title }}" class="first" />
+    {% else %}
+        <div class="first">{# There isn't always an image, add empty div to keep consistent design #}</div>
+    {% endif %}
+    <a href="{{ p.git_url }}">
+        {{ github_logo|safe }}
+        <span>Git</span>
+    </a>
     {% if p.url %}<a href="{{ p.url }}">Live Demo</a>{% endif %}
     <p>{{ p.description }}</p>
     <ol>

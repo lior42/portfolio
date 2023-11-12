@@ -34,8 +34,7 @@ body {
   padding: var(--pad-1) var(--pad-0);
 }
 
-img,
-svg {
+img {
   max-width: 100vw;
   border-radius: var(--rad-0);
 }
@@ -111,14 +110,17 @@ h3 {
 .actual-page {
   margin: calc(2 * var(--pad-1)) auto;
   width: clamp(67ch, 80%, 90%);
-  /* max-width: 70ch; */
 }
 
 .actual-page .bulletlist {
   display: grid;
   justify-content: center;
-  /* flex-direction: column; */
   gap: 5ch;
+}
+
+.actual-page .project {
+  display: flex;
+  flex-direction: column;
 }
 
 .actual-page .card {
@@ -127,6 +129,12 @@ h3 {
   border-radius: var(--rad-0);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s, transform 0.6s;
+}
+
+.project .card {
+  display: grid;
+  grid-template-columns: auto min-content;
+  gap: 2ch;
 }
 
 .card .top {
@@ -159,13 +167,13 @@ h3 {
   max-width: var(--_card-max-left);
 }
 
-.company .card .bottom p {
+.card p {
   /* border-inline-start: ; */
   border-inline-end: 1px solid var(--color-secondary-light);
   padding-inline-end: var(--pad-0);
 }
 
-.company .card .bottom ol {
+.card ol {
   display: flex;
   flex-direction: column;
   min-width: max-content;
@@ -174,14 +182,14 @@ h3 {
   gap: 0.3ch;
 }
 
-.company .card .bottom li {
+.card li {
   color: var(--color-primary);
   font-size: 1rem;
   display: grid;
   grid-template-columns: min-content auto;
 }
 
-.company .card .bottom li::before {
+.card li::before {
   counter-increment: jobCounter;
   content: counter(jobCounter) ")";
   margin-inline-end: 1ch;
@@ -293,6 +301,27 @@ dialog#output div {
 
 .actual-page .project svg path {
   fill: var(--color-secondary);
-  height: 2ch;
-  width: 2ch;
+  transform: scale(calc(20 / 98));
+}
+
+.project svg {
+  height: 20px;
+  width: 20px;
+}
+
+.project .card .first {
+  height: 5ch;
+  max-width: 15ch;
+}
+
+.project a {
+  color: var(--color-secondary);
+}
+
+.project a:hover {
+  color: var(--color-primary);
+}
+
+.project a:hover path {
+  fill: var(--color-primary);
 }
