@@ -30,4 +30,4 @@ async def validation_error_handler(request: Request, exc: RequestValidationError
 
 
 if __name__ == "__main__":
-    uvi_run(app, host=app_conf.bind_ip)
+    uvi_run(app, host=app_conf.bind_ip, port=app_conf.port)

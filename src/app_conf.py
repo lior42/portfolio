@@ -11,6 +11,7 @@ class __AppConf(BaseSettings):
     db_name: str = "lior_portfolio"
 
     bind_ip: str = "127.0.0.1"
+    port: int = 8000
 
 
 app_conf = __AppConf()
