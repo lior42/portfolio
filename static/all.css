@@ -335,24 +335,20 @@ dialog#output div {
 }
 
 @media only screen and (max-width: 600px) {
-  /* fits better on small screens */
   .actual-page {
     width: 95%;
   }
 
-  /* force it to be vertical, without messing with the grid too much */
   .actual-page form {
     display: flex;
     flex-direction: column;
   }
 
-  /* increase the font size and icons, the desktop value is too small on small screen */
   #last_notes,
   #last_notes * {
     --__sz: 0.8rem;
   }
 
-  /* make the structure more suitable for mobile */
   dialog#output[open=""] {
     display: flex;
     flex-direction: column;
@@ -361,12 +357,10 @@ dialog#output div {
     gap: 2ch;
   }
 
-  /* 5rem is too large on phones */
   .page-main.title h1 {
     font-size: 2.5rem;
   }
 
-  /* almost more suitable for phones, need work */
   .page-main.navigate ul {
     flex-direction: column;
     align-items: stretch;
@@ -378,8 +372,36 @@ dialog#output div {
     color: var(--color-bg);
     text-align: center;
   }
+
+  .page-main.navigate a:hover {
+    color: var(--color-secondary-light);
+  }
+
   .page-main.navigate li {
     padding: var(--pad-0);
     border-radius: var(--rad-0);
+  }
+
+  .company .card .bottom div::before {
+    content: "Technologies in use:";
+    font-size: 1rem;
+    font-style: italic;
+  }
+
+  .company .card .bottom ol::before {
+    content: "";
+    height: 1ch;
+  }
+
+  .company .card .bottom {
+    --_card-max-left: fit-content;
+  }
+  .card .top {
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .company .card .bottom p {
+    --_card-max-left: fit-content;
+    border-inline-end: 0;
   }
 }
