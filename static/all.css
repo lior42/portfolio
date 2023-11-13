@@ -325,3 +325,61 @@ dialog#output div {
 .project a:hover path {
   fill: var(--color-primary);
 }
+
+.actual-page .about-me {
+  background-color: #fffc;
+}
+
+.actual-page .about-me:hover {
+  background-color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+  /* fits better on small screens */
+  .actual-page {
+    width: 95%;
+  }
+
+  /* force it to be vertical, without messing with the grid too much */
+  .actual-page form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* increase the font size and icons, the desktop value is too small on small screen */
+  #last_notes,
+  #last_notes * {
+    --__sz: 0.8rem;
+  }
+
+  /* make the structure more suitable for mobile */
+  dialog#output[open=""] {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 2ch;
+  }
+
+  /* 5rem is too large on phones */
+  .page-main.title h1 {
+    font-size: 2.5rem;
+  }
+
+  /* almost more suitable for phones, need work */
+  .page-main.navigate ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
+  }
+  .page-main.navigate li,
+  .page-main.navigate a {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    text-align: center;
+  }
+  .page-main.navigate li {
+    padding: var(--pad-0);
+    border-radius: var(--rad-0);
+  }
+}
