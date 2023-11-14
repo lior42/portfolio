@@ -12,4 +12,15 @@
             {% endfor %}
         {% endif %}
     </div>
+    {% if should_display_pagination %}
+        <div class="pagination">
+            {% for page_n in all_pages %}
+                {% if page_n == current_page %}
+                    <span class="page-num active">{{ page_n + 1 }}</span>
+                {% else %}
+                    <a class="page-num" href="?page={{ page_n }}">{{ page_n + 1 }}</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    {% endif %}
 {% endblock page_content %}

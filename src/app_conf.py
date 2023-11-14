@@ -1,5 +1,5 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from pydantic import MongoDsn
+from pydantic import MongoDsn, PositiveInt
 
 
 class __AppConf(BaseSettings):
@@ -12,6 +12,8 @@ class __AppConf(BaseSettings):
 
     bind_ip: str = "127.0.0.1"
     port: int = 8000
+
+    pagination_limit: PositiveInt = 20
 
 
 app_conf = __AppConf()

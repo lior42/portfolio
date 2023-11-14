@@ -49,7 +49,8 @@ img {
   }
 }
 
-.page-main.navigate a {
+.page-main.navigate a,
+.actual-page .pagination a {
   color: var(--color-primary);
   position: relative;
   transition: color 0.3s, transform 0.3s;
@@ -58,7 +59,8 @@ img {
   flex-direction: column;
 }
 
-.page-main.navigate a::after {
+.page-main.navigate a::after,
+.actual-page .pagination a::after {
   content: "";
   height: 1px;
   background-color: var(--color-secondary);
@@ -68,12 +70,14 @@ img {
   transition: width 0.2s;
 }
 
-.page-main.navigate a:hover {
+.page-main.navigate a:hover,
+.actual-page .pagination a:hover {
   color: var(--color-secondary);
   transform: scaleX(1);
 }
 
-.page-main.navigate a:hover::after {
+.page-main.navigate a:hover::after,
+.actual-page .pagination a:hover::after {
   width: 100%;
   animation: links 0.2s alternate;
 }
@@ -334,6 +338,17 @@ dialog#output div {
   background-color: #fff;
 }
 
+.actual-page .pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  gap: 3ch;
+  flex-wrap: wrap;
+}
+.actual-page .active {
+  color: var(--color-secondary);
+}
+
 @media only screen and (max-width: 600px) {
   .actual-page {
     width: 95%;
@@ -365,6 +380,9 @@ dialog#output div {
     flex-direction: column;
     align-items: stretch;
     gap: 0.7rem;
+  }
+  .page-main.navigate li {
+    display: grid;
   }
   .page-main.navigate li,
   .page-main.navigate a {
