@@ -9,7 +9,9 @@
         {{ github_logo|safe }}
         <span>Git</span>
     </a>
-    {% if p.url %}<a href="{{ p.url }}">Live Demo</a>{% endif %}
+    {% if p.url %}
+        <a href="{{ p.url }}">Live Demo</a>{% else %}<span aria-hidden="true"></span>
+    {% endif %}
     <p>{{ p.description }}</p>
     <ol>
         {% for tech in p.technologies %}<li>{{ tech }}</li>{% endfor %}
