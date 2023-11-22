@@ -31,9 +31,23 @@ contactForm.addEventListener("submit", (e) => {
     },
     body: JSON.stringify(data),
   })
-    .then((resp) => {
-      const basicErrorType = parseInt(resp.status / 100);
-      let msgClass = "ok";
+    .then(async (resp) => {
+      const temp = resp.json();
+      if (!resp.ok) {
+        throw {
+          basicErrorType: parseInt(resp.status / 100),
+          content: await temp,
+        };
+      }
+      messageBox.classList.add("ok");
+
+      return temp;
+    })
+    .then((j) => {
+      messageBox.textContent = j["content"];
+    })
+    .catch(({ basicErrorType, content }) => {
+      let msgClass = "connection-error";
 
       if (basicErrorType === 4) {
         msgClass = "user-error";
@@ -42,15 +56,8 @@ contactForm.addEventListener("submit", (e) => {
       }
 
       messageBox.classList.add(msgClass);
-
-      return resp.json();
-    })
-    .then((j) => {
-      messageBox.textContent = j["content"];
-    })
-    .catch(() => {
-      messageBox.classList.add("connection-error");
-      messageBox.textContent = "Connection Error, Try again later.";
+      messageBox.textContent =
+        content.content || "Connection Error, Try again later.";
     })
     .finally(() => {
       outDialog.showModal();
